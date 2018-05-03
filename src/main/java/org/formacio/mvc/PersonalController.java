@@ -5,8 +5,11 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
+@RequestMapping(path="/personal")
 public class PersonalController {
 
 	// no toqueu la declaracio de baseDeDades ni el metode getBaseDeDades
@@ -16,6 +19,12 @@ public class PersonalController {
 	// per exemple, obtenir la persona amb id 1 sera fer baseDeDades.get(1), etc etc 
 	
 	private List<String> baseDeDades = new ArrayList<>(Arrays.asList("Joana","Antonia","Pere"));
+	
+	@RequestMapping(path="/info")
+	@ResponseBody
+	public String getArraySizeInfo() {
+		return "Hi ha " + this.getBaseDeDades().size() + " persones";
+	}
 	
 	public List<String> getBaseDeDades() {
 		return baseDeDades;
