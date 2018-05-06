@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -30,7 +31,13 @@ public class PersonalController {
 	
 	@RequestMapping(path="/consulta")
 	@ResponseBody
-	public String obtenirAmbRequestParam(int id) {
+	public String obtenirAmbRequestParam( @RequestParam(required=false, defaultValue="0") int id) {
+		return getBaseDeDades().get(id);
+	}
+	
+	@RequestMapping(path="/persona/{id}")
+	@ResponseBody
+	public String obtenirAmbRequestVariable ( @PathVariable int id) {
 		return getBaseDeDades().get(id);
 	}
 	
