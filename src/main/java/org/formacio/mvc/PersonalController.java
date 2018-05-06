@@ -6,6 +6,8 @@ import java.util.List;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
@@ -23,7 +25,13 @@ public class PersonalController {
 	@RequestMapping(path="/info")
 	@ResponseBody
 	public String getArraySizeInfo() {
-		return "Hi ha " + this.getBaseDeDades().size() + " persones";
+		return "Hi ha " + getBaseDeDades().size() + " persones";
+	}
+	
+	@RequestMapping(path="/consulta")
+	@ResponseBody
+	public String obtenirAmbRequestParam(int id) {
+		return getBaseDeDades().get(id);
 	}
 	
 	public List<String> getBaseDeDades() {
