@@ -41,6 +41,13 @@ public class PersonalController {
 		return getBaseDeDades().get(id);
 	}
 	
+	@RequestMapping(path="/afegir", method=RequestMethod.POST)
+	@ResponseBody
+	public String afegirPresona( @RequestParam(name="nom") String nom ) {
+		this.baseDeDades.add(nom);
+		return "ok";
+	}
+	
 	public List<String> getBaseDeDades() {
 		return baseDeDades;
 	}
